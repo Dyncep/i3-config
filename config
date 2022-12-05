@@ -3,8 +3,6 @@ set $mod Mod4
 new_window pixel 1
 new_float normal
 
-hide_edge_borders none
-
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
@@ -190,6 +188,12 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+}
+
 # Autostart applications
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id nm-applet
@@ -198,7 +202,6 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
 # Theme colors
 client.focused #b0b287 #1d1e26 #b0b287 #789073 #789073
